@@ -68,7 +68,6 @@ const Header = () => {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -79,7 +78,7 @@ const Header = () => {
               textDecoration: 'none',
             }}
           >
-          UWI Timetable Tool
+          UWI STA
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CancelIcon from '@mui/icons-material/Cancel';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import TimePie from './TimePie';
 import {
   Box,
   TextField,
@@ -34,7 +35,7 @@ export default function StudentTableForm({ dataAPI, dispatchTableChange, tableSe
     }
   );
   const [semester, setSemester] = useState(tableSettings.semester || 'all');
-  const [selectedCourse, setSelectedCourse] = useState('');
+  const [selectedCourse, setSelectedCourse] = useState(null);
   const [currentCourses, setCurrentCourses] = useState(tableSettings.current_courses || []);
 
   const handleDepartmentChange = (e) => {
@@ -110,6 +111,7 @@ export default function StudentTableForm({ dataAPI, dispatchTableChange, tableSe
             <Autocomplete
               options={courseList}
               getOptionLabel={(option) => `${option.course_code} ${option.course_name}`}
+              
               onChange={(e, newValue) => setSelectedCourse(newValue)}
               renderInput={(params) => (
                 <TextField {...params} label="Select a Course to Add" variant="outlined" />
@@ -118,7 +120,9 @@ export default function StudentTableForm({ dataAPI, dispatchTableChange, tableSe
               clearOnEscape
             />
           </FormControl>
-               
+
+
+        
           <Button
             variant="contained"
             color="primary"
@@ -128,6 +132,7 @@ export default function StudentTableForm({ dataAPI, dispatchTableChange, tableSe
           >
             Add Course
           </Button>
+        
      
 
          
@@ -270,7 +275,10 @@ export default function StudentTableForm({ dataAPI, dispatchTableChange, tableSe
       <Divider sx={{ my: 3 }} />
 
       {/* Export Section */}
-          <Button disabled={tableSettings.current_courses.length<=0} onClick={handlePrint} variant="contained" color="primary">Export to Document</Button>
+          <Button disabled={tableSettings.current_courses.length<=0} onClick={handlePrint} variant="contained" color="primary">Export to Document</Button> 
+ 
+       
     </Box>
   );
 }
+ 

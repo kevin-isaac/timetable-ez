@@ -89,7 +89,7 @@ satisfyCriteria: function(course,semester) {
 
 	
  buildTable: function(tableSettings,dayRows,toExport){
-  
+  this.tableOccupied=false;
     this.ongoingClasses = [];
     let str='';
  
@@ -159,6 +159,7 @@ buildRow: function(day, time, toExport,tableSettings) {
                         if (this.satisfyCriteria(this.currentClasses[i][j],tableSettings.semester)) {
                             this.ongoingClasses.push(this.currentClasses[i][j]);
                             this.ongoingClasses[this.ongoingClasses.length - 1].i = i;
+                            this.tableOccupied=true;
                         }
                     }
 
@@ -177,10 +178,14 @@ buildRow: function(day, time, toExport,tableSettings) {
         
             while (this.currentCourses[x].course_code != this.ongoingClasses[k].course_code&&x<this.currentCourses.length) x++;
 
+              let tooltip=this.ongoingClasses[k].start_time+ " - " +this.ongoingClasses[k].end_time+" ";
+              if(!tableSettings.display_data.show_room) tooltip+=this.ongoingClasses[k].room_name+" ";
+              if(!tableSettings.display_data.show_class_type) tooltip+=this.ongoingClasses[k].class_type;
+         
 
-              str += '<tr  id="' + (day + time + j) + '" class="class' + this.ongoingClasses[k].class_id + '"><td class="inner-cell ttCellTheme' + tableSettings.style + '_' + (this.ongoingClasses[k].i + 1) + '"   > <Box>';
+              str += '<tr  id="' + (day + time + j) + '" class="class' + this.ongoingClasses[k].class_id + '"><td title="'+tooltip+'" class="inner-cell ttCellTheme' + tableSettings.style + '_' + (this.ongoingClasses[k].i + 1) + '"   > <Box>';
               //if (this.ongoingClasses[k].end_time.split(":")[0] == this.times[this.times.indexOf(time) + 1].split(":")[0]) str += '<span class="x-button glyphicon glyphicon-remove pull-right" title="Remove this class."  data-placement="top" onclick="removeEntry(\'' + this.ongoingClasses[k].class_id + '\',\'' + (day + time + j) + '\');"></span> ';
-              str += '<p>' + this.ongoingClasses[k].course_code;
+              str += '<p><b>' + this.ongoingClasses[k].course_code+'</b>';
               if (tableSettings.display_data.show_name) {
                 
 
@@ -203,7 +208,7 @@ buildRow: function(day, time, toExport,tableSettings) {
     },
 
     buildRoomTable: function(tableSettings,dayRows,toExport){
-      
+      this.tableOccupied=false;
       this.ongoingClasses = [];
       let str='';
 
@@ -264,7 +269,7 @@ buildRow: function(day, time, toExport,tableSettings) {
                         if (this.satisfyCriteria(this.currentClasses[i][j],tableSettings.semester)) {
                             this.ongoingClasses.push(this.currentClasses[i][j]);
                             this.ongoingClasses[this.ongoingClasses.length - 1].i = j % 7;
-
+                            this.tableOccupied=true;
                         }
                     }
 
@@ -282,11 +287,14 @@ buildRow: function(day, time, toExport,tableSettings) {
             var x = 0;
         
             while (this.currentCourses[x].course_code != this.ongoingClasses[k].course_code&&x<this.currentCourses.length) x++;
-            
 
-              str += '<tr  id="' + (day + time + j) + '" class="class' + this.ongoingClasses[k].class_id + '"><td class="inner-cell ttCellTheme' + tableSettings.style + '_' + (this.ongoingClasses[k].i + 1) + '"   > <Box>';
+            let tooltip=this.ongoingClasses[k].start_time+ " - " +this.ongoingClasses[k].end_time+" ";
+            if(!tableSettings.display_data.show_room) tooltip+=this.ongoingClasses[k].room_name+" ";
+            if(!tableSettings.display_data.show_class_type) tooltip+=this.ongoingClasses[k].class_type+" ";
+
+              str += '<tr  id="' + (day + time + j) + '" class="class' + this.ongoingClasses[k].class_id + '"><td title="'+tooltip+'" class="inner-cell ttCellTheme' + tableSettings.style + '_' + (this.ongoingClasses[k].i + 1) + '"   > ';
               //if (this.ongoingClasses[k].end_time.split(":")[0] == this.times[this.times.indexOf(time) + 1].split(":")[0]) str += '<span class="x-button glyphicon glyphicon-remove pull-right" title="Remove this class."  data-placement="top" onclick="removeEntry(\'' + this.ongoingClasses[k].class_id + '\',\'' + (day + time + j) + '\');"></span> ';
-              str += '<p>' + this.ongoingClasses[k].course_code;
+              str += '<p><b>' + this.ongoingClasses[k].course_code+'</b>';
               if (tableSettings.display_data.show_name) {
                 
 
@@ -295,7 +303,7 @@ buildRow: function(day, time, toExport,tableSettings) {
               if (tableSettings.display_data.show_class_type) str += '<p> ' + (this.ongoingClasses[k].class_type)+'</p>';
               if (tableSettings.display_data.show_weeks) str += '<p> ' + (this.ongoingClasses[k].weeks)+'</p>';
               if (tableSettings.display_data.show_class_id) str += '<p>  ID' + (this.ongoingClasses[k].class_id)+'</p>';
-              str += '</p></Box></td></tr> ';
+              str += '</p> </td></tr> ';
     
             
               //str +=('<tr  id="more' + (day + time + k) + '" class="class' + ongoingClasses[k].class_id + '"><td class="ttCellTheme' + theme + '_' + (ongoingClasses[k].i + 1) + '"   > <span  class="x-button glyphicon glyphicon-remove pull-right" title="Remove this class."  data-placement="top" onclick="removeEntry(\''+ongoingClasses[k].class_id+'\',\'more' + (day + time + k) + '\');"></span> <p>[' + ongoingClasses[k].course_code + ', ' + (ongoingClasses[k].room_name) + '] </p></td></tr> ');

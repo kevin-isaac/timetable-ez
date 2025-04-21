@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
 
-.center-notice{
- 
-}
-
-
-
-
 
 .ttCellTheme1_1 {
     text-align:center;
@@ -48,7 +41,7 @@
     text-align:center;
     background: white;
     color:#000000; 
-    font-style: italic;
+    
     font-family: 'Comic Neue', cursive, sans-serif;
 
      padding: 12px;
@@ -63,7 +56,7 @@
     text-align:center;
     background: #FFCCFF; 
     color:#000000;
-    font-style: italic;
+    
     font-family: 'Comic Neue', cursive, sans-serif;
      padding: 12px;
  
@@ -76,7 +69,7 @@
     text-align:center;
     background: #FFCC99; 
     color:#000000;
-    font-style: italic;
+    
     font-family: 'Comic Neue', cursive, sans-serif;
      padding: 12px;
  
@@ -96,7 +89,7 @@
   border: 1px solid #aaa;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease;
-    font-style: italic;
+    
     font-family: 'Comic Neue', cursive, sans-serif;
 }
 
@@ -104,7 +97,7 @@
     text-align:center;
     background: #CCFFFF; 
     color:#000000;
-    font-style: italic;
+    
     font-family: 'Comic Neue', cursive, sans-serif;
      padding: 12px;
  
@@ -118,7 +111,7 @@
     text-align:center;
     background: #CCCCFF; 
     color:#000000;
-    font-style: italic;
+    
     font-family: 'Comic Neue', cursive, sans-serif;
     
      padding: 12px;
@@ -132,7 +125,7 @@
     text-align:center; 
     background: #CCCCCC;
     color:#000000;
-    font-style: italic;
+    
     font-family: 'Comic Neue', cursive, sans-serif;
      padding: 12px;
  
@@ -423,9 +416,14 @@
 th, .row-header {
     text-align: center;
     font-weight: bold;
+    font-size: 1.0em;
+    
 }
 
 
+.table-bordered{
+  width:100%;
+}
 
 td {
     margin: 20px;
@@ -459,7 +457,7 @@ td {
     height: 100%;
     border-collapse: collapse; /* Ensures borders don't double up */
     table-layout: fixed;        /* Optional: uniform column widths */
- 
+    font-size: 0.8rem;
 
  
   padding: 10px;
@@ -474,31 +472,50 @@ td {
     
   }
   
+
+  .full-size-table > thead > tr > th
+ {
+    
+    font-size: 1.00em;
+  }
   
+ 
 
   
 
   /* Responsive font size adjustments */
 @media (max-width: 1024px) {
     .full-size-table {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
   }
   
   @media (max-width: 768px) {
     .full-size-table {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
     }
   }
   
   @media (max-width: 600px) {
     .full-size-table {
-      font-size: 0.75rem;
+      font-size: 0.65rem;
     }
   }
   
   @media (max-width: 480px) {
     .full-size-table {
-      font-size: 0.65rem;
+      font-size: 0.55rem;
+    }
+  }
+
+  @media print {
+    body {
+      -webkit-print-color-adjust: exact; /* Chrome, Safari */
+      print-color-adjust: exact;         /* Firefox */
+      size: landscape;
+    }
+    table {
+      transform: scale(0.85);
+      transform-origin: top left;
     }
   }

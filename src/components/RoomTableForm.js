@@ -197,7 +197,8 @@ export default function RoomTableForm({ dataAPI, dispatchTableChange, tableSetti
       <Divider sx={{ my: 3 }} />
 
       {/* Export Section */}
-          <Button disabled={tableSettings.room==''} onClick={handlePrint} variant="contained" color="primary">Export to Document</Button>
+       
+          <Button disabled={tableSettings.room==''} onClick={handlePrint} variant="contained" color="primary">Export to Document</Button> 
     </Box>
   );
 }

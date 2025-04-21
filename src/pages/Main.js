@@ -6,12 +6,12 @@ import RoomTableForm from '../components/RoomTableForm';
 import TimeTable from '../components/TimeTable';
 import { Box, Tabs, Tab, Typography } from '@mui/material';
 import FadeInSection from '../components/FadeInSection';
-
-
-
+import PrintStyles from '../components/PrintStyles';
+import useMediaQuery from '../components/useMediaQuery';
+import SettingsIcon from '@mui/icons-material/Settings';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
+ 
   return (
     <div
       role="tabpanel"
@@ -47,20 +47,38 @@ const updateTable = (state,action) => {
 const Main = ({database}) => {
 
   const printRef = useRef();
-
+  const isSmallScreen = useMediaQuery('(max-width: 1024px)');
   const handlePrint = () => {
     const content = printRef.current;
-    const printWindow = window.open('', '', 'width=800,height=600');
+    const printWindow = window.open('', '' ,'width=800,height=600');
     if (printWindow) {
       printWindow.document.write(`
         <html>
           <head>
-            <title>Print Section</title>
+            <title>Class Time Table</title>
+            
             <style>
-              body { font-family: Arial, sans-serif; padding: 20px; }
+            `
+              +PrintStyles()+
+              `
+              body { font-family: Arial, sans-serif; padding: 2px; }
               table, th, td { border: 1px solid black; border-collapse: collapse; }
-              th, td { padding: 8px; text-align: left; }
+              th, td { padding: 0px; text-align: left; }
+              p{padding:2px};
+              @media print {
+                body {
+                  -webkit-print-color-adjust: exact; /* Chrome, Safari */
+                  print-color-adjust: exact;         /* Firefox */
+                  size: landscape;
+                }
+                table {
+                  transform: scale(0.85);
+                  transform-origin: top left;
+                }
+              }
+             
             </style>
+
           </head>
           <body>
             ${content.innerHTML}
@@ -112,45 +130,33 @@ const Main = ({database}) => {
  
   
   return (
-    <div className="flex flex-col md:flex-col w-full h-screen bg-inherit">
+    <div className="flex flex-col lg:flex-col w-full h-screen  ">
 
       {/*previous place for top banner*/}
 
       <FadeInSection>
 
       {/* Sidebar */}
-      <div className="flex flex-col md:flex-row text-base bg-inherit">
-
+      <div className="flex flex-col lg:flex-row text-base sidebar-overall ">
+      {isSmallScreen&&<Header />}
         {/* Hamburger button for mobile */}
-        <button
-          className="md:hidden text-white m-4 min-w-lg"
+        {!isOpen&&<button
+          className="lg:hidden text-white m-4 min-w-xl "
           onClick={toggleMain}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-8 h-8"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
+           <SettingsIcon className="w-16 h-16 text-left float-left"   />
          
-        </button>
+         
+        </button>}
         <div className={`${isOpen ? 'block' : 'hidden'
-          } md:block w-full md:w-96 bg-gray-800 text-white p-4   z-50 transition-all ease-in-out duration-300   md:h-auto`}>
+          } lg:block w-full lg:w-96 bg-gray-800 text-white p-4   z-50 transition-all ease-in-out duration-300   lg:h-auto`}>
 
 
           <div className="flex items-center justify-between mb-4">
 
             {/* Close button for mobile */}
-            <button
-              className="md:hidden text-white"
+             <button
+              className="lg:hidden text-white"
               onClick={toggleMain}
             >
               <svg
@@ -164,7 +170,7 @@ const Main = ({database}) => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
+                  d="M5 15l7-7 7 7"
                 />
               </svg>
             </button>
@@ -185,19 +191,21 @@ const Main = ({database}) => {
           {tab==0&&<StudentTableForm dataAPI={database} dispatchTableChange={dispatchTableChange} tableSettings={tableSettings} handlePrint={handlePrint} />}
           {tab==1&&<RoomTableForm dataAPI={database} dispatchTableChange={dispatchTableChange} tableSettings={tableSettings} handlePrint={handlePrint} />}
 
+
+          
         </div>
 
         {/* Main Content */}
-        <div className="flex-1   bg-inherit transition-all ease-in-out duration-300 h-full overflow-y-auto">
+        <div className="flex-1   bg-inherit transition-all ease-in-out duration-300 h-full   overflow-y-auto">
 
-          <Header />
+          {!isSmallScreen&&<Header />}
 
 
           <div ref={printRef} className="content p-5 bg-inherit text-center flex items-center justify-center">
 
           { ( (tab==0&&tableSettings.current_courses.length<=0) || (tab==1&&tableSettings.room=='') ) && <div className="center-notice mt-16">
                         <h1 className="text-3xl font-bold">Welcome to Timetable EZ</h1>
-                        <p className="mt-4">Use the control panel on the left to begin generating your table.</p>
+                        <p className="mt-4">Use the control panel to begin generating your table.</p>
                       </div>
           }
           {

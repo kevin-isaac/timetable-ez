@@ -16,7 +16,7 @@ import {
  
 
 const TimeTable = ({ tableSettings, dataAPI }) => {
-    const isSmallScreen = useMediaQuery('(max-width: 768px)');
+    const isSmallScreen = useMediaQuery('(max-width: 1024px)');
     const [useDayHeaders,setUseDayHeaders] =useState(false);
     const timeHeaders = dataAPI.times;
     const time12Headers = dataAPI.times12hr;
@@ -59,6 +59,8 @@ const TimeTable = ({ tableSettings, dataAPI }) => {
                                </tbody>
                               
                             </table>
+
+                            {!dataAPI.tableOccupied&& <span className="text-yellow-600 italic p-10">Your table settings do not seem to result in any active classes</span>}
                             </FadeInSection>
          
        
