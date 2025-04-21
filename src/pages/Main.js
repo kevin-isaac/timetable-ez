@@ -188,8 +188,8 @@ const Main = ({database}) => {
               <TabPanel value={tab} index={0}></TabPanel>
               <TabPanel value={tab} index={1}></TabPanel>
             </Box>
-          {tab==0&&<StudentTableForm dataAPI={database} dispatchTableChange={dispatchTableChange} tableSettings={tableSettings} handlePrint={handlePrint} />}
-          {tab==1&&<RoomTableForm dataAPI={database} dispatchTableChange={dispatchTableChange} tableSettings={tableSettings} handlePrint={handlePrint} />}
+          {tab===0&&<StudentTableForm dataAPI={database} dispatchTableChange={dispatchTableChange} tableSettings={tableSettings} handlePrint={handlePrint} />}
+          {tab===1&&<RoomTableForm dataAPI={database} dispatchTableChange={dispatchTableChange} tableSettings={tableSettings} handlePrint={handlePrint} />}
 
 
           
@@ -203,16 +203,16 @@ const Main = ({database}) => {
 
           <div ref={printRef} className="content p-5 bg-inherit text-center flex items-center justify-center">
 
-          { ( (tab==0&&tableSettings.current_courses.length<=0) || (tab==1&&tableSettings.room=='') ) && <div className="center-notice mt-16">
+          { ( (tab===0&&tableSettings.current_courses.length<=0) || (tab===1&&tableSettings.room==='') ) && <div className="center-notice mt-16">
                         <h1 className="text-3xl font-bold">Welcome to Timetable EZ</h1>
                         <p className="mt-4">Use the control panel to begin generating your table.</p>
                       </div>
           }
           {
-            tab==0&&tableSettings.current_courses.length>0 && <TimeTable tableSettings={tableSettings}  dataAPI={database}/>
+            tab===0&&tableSettings.current_courses.length>0 && <TimeTable tableSettings={tableSettings}  dataAPI={database}/>
           }  
           {
-            tab==1&&tableSettings.room!='' && <TimeTable tableSettings={tableSettings}  dataAPI={database}/>
+            tab===1&&tableSettings.room!=='' && <TimeTable tableSettings={tableSettings}  dataAPI={database}/>
           } 
   
           </div>
