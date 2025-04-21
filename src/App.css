@@ -1,0 +1,39 @@
+
+.App {
+  background-color: #282c34;
+  min-width: 100vw;
+  min-height: 100vh;
+  height:100%;
+  font-size: calc(10px + 2vmin);
+ 
+  color: white;
+
+  
+}
+
+
+
+.App-main {
+  background-color: #282c34;
+ 
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.content {
+  margin:auto;
+  background-color: #282c34;
+  padding-bottom:8rem;
+  max-height:max-content;
+}
+
+

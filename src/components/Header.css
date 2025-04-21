@@ -1,0 +1,22 @@
+.App-logo {
+
+    pointer-events: none;
+    min-height: 5vw;
+  }
+  
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin 1 0.5s linear;
+    }
+  }
+  @keyframes App-logo-spin {
+    from {
+      transform: translateX(40%);
+      opacity:0%;
+    }
+    to {
+      transform: translateX(0%);
+      opacity:100%;
+    }
+  }

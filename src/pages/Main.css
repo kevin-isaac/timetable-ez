@@ -1,0 +1,504 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
+
+.center-notice{
+ 
+}
+
+
+
+
+
+.ttCellTheme1_1 {
+    text-align:center;
+    color: white;
+}
+
+.ttCellTheme1_2 {
+    text-align:center;
+    
+}
+
+.ttCellTheme1_3 {
+    text-align:center;
+  
+}
+
+.ttCellTheme1_4 {
+    text-align:center;
+  
+}
+
+.ttCellTheme1_5 {
+    text-align:center;
+    
+}
+
+.ttCellTheme1_6 {
+    text-align:center;
+   
+}
+
+.ttCellTheme1_7 {
+    text-align:center;
+    
+}
+
+.ttCellTheme2_1 {
+    text-align:center;
+    background: white;
+    color:#000000; 
+    font-style: italic;
+    font-family: 'Comic Neue', cursive, sans-serif;
+
+     padding: 12px;
+ 
+  border: 1px solid #aaa;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+
+}
+
+.ttCellTheme2_2 {
+    text-align:center;
+    background: #FFCCFF; 
+    color:#000000;
+    font-style: italic;
+    font-family: 'Comic Neue', cursive, sans-serif;
+     padding: 12px;
+ 
+  border: 1px solid #aaa;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.ttCellTheme2_3 {
+    text-align:center;
+    background: #FFCC99; 
+    color:#000000;
+    font-style: italic;
+    font-family: 'Comic Neue', cursive, sans-serif;
+     padding: 12px;
+ 
+  border: 1px solid #aaa;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+    
+}
+
+.ttCellTheme2_4 {
+    text-align:center; 
+    background: #CCFFCC;
+    color:#000000;
+    
+     padding: 12px;
+ 
+  border: 1px solid #aaa;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+    font-style: italic;
+    font-family: 'Comic Neue', cursive, sans-serif;
+}
+
+.ttCellTheme2_5 {
+    text-align:center;
+    background: #CCFFFF; 
+    color:#000000;
+    font-style: italic;
+    font-family: 'Comic Neue', cursive, sans-serif;
+     padding: 12px;
+ 
+  border: 1px solid #aaa;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+    
+}
+
+.ttCellTheme2_6 {
+    text-align:center;
+    background: #CCCCFF; 
+    color:#000000;
+    font-style: italic;
+    font-family: 'Comic Neue', cursive, sans-serif;
+    
+     padding: 12px;
+ 
+  border: 1px solid #aaa;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.ttCellTheme2_7 {
+    text-align:center; 
+    background: #CCCCCC;
+    color:#000000;
+    font-style: italic;
+    font-family: 'Comic Neue', cursive, sans-serif;
+     padding: 12px;
+ 
+  border: 1px solid #aaa;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+    
+}
+
+
+.ttCellTheme3_1 {
+    text-align:center;
+ 
+    background: linear-gradient(135deg,  #CCFFFF, #eeeeee);
+    color:#000000;
+    font-family: 'Nunito';
+
+    padding: 12px;
+ 
+  border: 1px solid #bbb;
+  box-shadow: inset 2px 2px 5px #ffffff,
+              inset -2px -2px 5px #aaa;
+  transition: all 0.3s ease;
+}
+
+.ttCellTheme3_2 {
+    text-align:center;
+ 
+    background: linear-gradient(135deg,  #f1f1f1, #fcc9e2);
+    color:#000000;
+    border: 1px solid #bbb;
+  box-shadow: inset 2px 2px 5px #ffffff,
+              inset -2px -2px 5px #aaa;
+  transition: all 0.3s ease;
+    font-family: 'Nunito';
+}
+
+.ttCellTheme3_3 {
+    text-align:center;
+ 
+    background: linear-gradient(135deg,  #f1f1f1, #c3e1ff);
+    color:#000000;
+    border: 1px solid #bbb;
+  box-shadow: inset 2px 2px 5px #ffffff,
+              inset -2px -2px 5px #aaa;
+  transition: all 0.3s ease;
+    font-family: 'Nunito';
+}
+
+.ttCellTheme3_4 {
+    text-align:center;
+    
+    color:#000000;
+    background: linear-gradient(135deg,  #f1f1f1, #e6ccff);
+    border: 1px solid #bbb;
+  box-shadow: inset 2px 2px 5px #ffffff,
+              inset -2px -2px 5px #aaa;
+  transition: all 0.3s ease;
+    font-family: 'Nunito';
+}
+
+.ttCellTheme3_5 {
+    text-align:center;
+    
+    color:#000000;
+    background: linear-gradient(135deg,  #f1f1f1, #DDDEFF);
+    border: 1px solid #bbb;
+  box-shadow: inset 2px 2px 5px #ffffff,
+              inset -2px -2px 5px #aaa;
+  transition: all 0.3s ease;
+    font-family: 'Nunito';
+}
+
+.ttCellTheme3_6 {
+    text-align:center;
+    
+    background: linear-gradient(135deg,  rgba(186, 232, 247, 0.61), #fff4df);
+    border: 1px solid #bbb;
+  box-shadow: inset 2px 2px 5px #ffffff,
+              inset -2px -2px 5px #aaa;
+  transition: all 0.3s ease;
+    color:#000000;
+    
+    font-family: 'Nunito';
+}
+
+.ttCellTheme3_7 {
+    text-align:center;
+    
+    background: linear-gradient(135deg,  rgb(221, 244, 255), #cfffff);
+    border: 1px solid #bbb;
+  box-shadow: inset 2px 2px 5px #ffffff,
+              inset -2px -2px 5px #aaa;
+  transition: all 0.3s ease;
+    color:#000000;
+    
+    font-family: 'Nunito';
+}
+
+.ttCellTheme4_1 {
+    text-align:center;
+    background: #330000;
+    color: white;
+    font-family: "Garamond";
+
+ 
+    
+}
+
+.ttCellTheme4_2 {
+    text-align:center;
+    background: #003300;
+    color: white;
+    font-family: "Garamond";
+    
+}
+
+.ttCellTheme4_3 {
+    text-align:center;
+    background: #000033;
+    color: white;
+    font-family: "Garamond";
+    
+}
+
+.ttCellTheme4_4 {
+    text-align:center;
+    background: #000099;
+    color: white;
+    font-family: "Garamond";
+    
+}
+
+.ttCellTheme4_5 {
+    text-align:center;
+    background: #330033;
+    color: white;
+    font-family: "Garamond";
+    
+}
+
+.ttCellTheme4_6 {
+    text-align:center;
+    background: #333300;
+    color: white;
+    font-family: "Garamond";
+    
+}
+
+.ttCellTheme4_7 {
+    text-align:center;
+    background: #000000;
+    color: white;
+    font-family: "Garamond";
+    
+}
+
+.ttCellTheme5_1 {
+    text-align:center;
+    background: rgb(254, 255, 242);
+    font-family: courier;
+    color: rgb(39, 120, 167);
+}
+
+.ttCellTheme5_2 {
+    text-align:center;
+    background: #ffe7e7;
+    font-family: courier;
+    color: rgb(39, 120, 167);
+}
+
+.ttCellTheme5_3 {
+    text-align:center;
+    background: #f8ffdb;
+    font-family: courier;
+    color: rgb(39, 120, 167);
+}
+
+.ttCellTheme5_4 {
+    text-align:center;
+    background: #ddffe3;
+    font-family: courier;
+    color: rgb(39, 120, 167);
+}
+
+.ttCellTheme5_5 {
+    text-align:center;
+    background: #dff1ff;
+    font-family: courier;
+    color: rgb(39, 120, 167);
+}
+
+.ttCellTheme5_6 {
+    text-align:center;
+    background: #ffdefa;
+    font-family: courier;
+    color: rgb(39, 120, 167);
+}
+
+.ttCellTheme5_7 {
+    background: #ffe1e1;
+    text-align:center;
+    font-family: courier;
+    color: rgb(39, 120, 167);
+}
+
+.ttGeneralTheme1 {
+    text-align:center;
+    color: white; 
+    
+}
+
+.ttGeneralTheme1.full-size-table > thead > tr > th,
+.ttGeneralTheme1.full-size-table > tbody > tr > td
+{
+  
+  border: 1px solid #42464d;     /* Borders on all cells */
+}
+
+
+.ttGeneralTheme2 {
+    text-align:center;
+    color: black;
+    font-family: 'Comic Neue', cursive, sans-serif;
+    background:#f0f09c;
+    
+}
+.ttGeneralTheme2.full-size-table > thead > tr > th,
+.ttGeneralTheme2.full-size-table > tbody > tr > td
+{
+  
+  border: 1px solid rgba(206, 206, 206, 0.527);     /* Borders on all cells */
+  
+}
+
+
+.ttGeneralTheme3 {
+    text-align:center;
+    border: none;
+   
+  outline: none;
+    color:#000000;
+    background:   #e8ffff;
+ 
+    font-family: 'Nunito';
+}
+
+ 
+.ttGeneralTheme3.full-size-table > tbody > tr > td
+{
+  
+  border: 1px solid rgba(255, 255, 255, 0.527);     /* Borders on all cells */
+}
+
+.ttGeneralTheme4 {
+    text-align:center;
+    background: #1a101f;
+    color: white;
+    font-family: "Garamond";
+}
+
+
+.ttGeneralTheme4.full-size-table > thead > tr > th,
+.ttGeneralTheme4.full-size-table > tbody > tr > td
+{
+  
+  border: 1px dotted #706262;     /* Borders on all cells */
+}
+
+
+
+
+.ttGeneralTheme5 {
+    text-align:center;
+    background-color: white;
+    font-family: courier;
+    color: rgb(39, 120, 167);
+    
+}
+
+.ttGeneralTheme5.full-size-table > thead > tr > th,
+.ttGeneralTheme5.full-size-table > tbody > tr > td
+{
+  
+  border: 1px dashed rgba(206, 206, 206, 0.527);     /* Borders on all cells */
+}
+
+th, .row-header {
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+td {
+    margin: 20px;
+    text-align: center;
+    
+}
+
+.inner-cell{
+    border-bottom: 1px dashed rgb(119, 119, 119);
+    width: 100%;
+    text-align: center;      /* Horizontally center text/content */
+    vertical-align: middle;  /* Vertically center content */
+    box-sizing: border-box;  /* Includes padding/border in width */
+    white-space: normal;     /* Allows wrapping */
+    word-wrap: break-word;   /* Prevents overflow */
+    padding: 10px;           /* Optional spacing */
+
+  
+ 
+}
+ 
+
+.full-size-table-container {
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Optional: scroll if needed */
+  }
+  
+  .full-size-table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse; /* Ensures borders don't double up */
+    table-layout: fixed;        /* Optional: uniform column widths */
+ 
+
+ 
+  padding: 10px;
+ 
+  }
+  
+  .full-size-table > thead > tr > th,
+  .full-size-table > tbody > tr > td {
+    
+    text-align: center;
+    vertical-align: top;
+    
+  }
+  
+  
+
+  
+
+  /* Responsive font size adjustments */
+@media (max-width: 1024px) {
+    .full-size-table {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .full-size-table {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .full-size-table {
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .full-size-table {
+      font-size: 0.65rem;
+    }
+  }
