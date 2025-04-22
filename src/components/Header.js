@@ -23,9 +23,7 @@ const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState (null);
   const [anchorElUser, setAnchorElUser] = React.useState (null);
   const { user } = useUser();
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
