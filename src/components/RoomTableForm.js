@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import CancelIcon from '@mui/icons-material/Cancel';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   Box,
-  TextField,
   FormControlLabel,
-  Autocomplete,
   FormGroup,
   Checkbox,
   Select,
@@ -16,8 +13,7 @@ import {
   Divider,
   Accordion,
   AccordionSummary,
-  AccordionDetails,
-  Tooltip
+  AccordionDetails
 } from '@mui/material';
 
 export default function RoomTableForm({ dataAPI, dispatchTableChange, tableSettings, handlePrint }) {
@@ -198,7 +194,7 @@ export default function RoomTableForm({ dataAPI, dispatchTableChange, tableSetti
 
       {/* Export Section */}
        
-          <Button disabled={tableSettings.room==''} onClick={handlePrint} variant="contained" color="primary">Export to Document</Button> 
+          <Button disabled={tableSettings.room===''} onClick={handlePrint} variant="contained" color="primary">Export to Document</Button> 
     </Box>
   );
 }

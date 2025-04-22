@@ -1,9 +1,8 @@
 import './Login.css';
 import logo from '../logo.png';
-import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
-import { TextField, Button, Paper, Typography, Box } from '@mui/material';
+import { TextField, Button,  Typography, Box } from '@mui/material';
 import { useUser } from '../UserContext';
 function Login() {
   const [userId, setUserId] = useState('');

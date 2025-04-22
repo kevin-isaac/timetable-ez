@@ -1,15 +1,8 @@
-/*
-const seededRandom = seed => {
-  const m = 2 ** 35 - 31;
-  const a = 185852;
-  let s = seed % m;
-
-  return () => (s = s * a % m) / m;
-};*/
+var DB=new Database();
 
 const fetchAPI = {
   //random booked dates
-  
+  DB:DB,
   ongoingClasses:[],
   currentCourses:[],
   days:['Mon','Tue','Wed','Thu','Fri','Sat'],
@@ -18,12 +11,13 @@ const fetchAPI = {
   semesterCriteria: false,
 
     generateCourseOptions:function(dept){
-        if(dept=="none"){
-            var courses=DB.selectRows("Course","dept_name");
+      var courses
+        if(dept==="none"){
+            courses=DB.selectRows("Course","dept_name");
         }
         else
-            var courses=DB.selectRows("Course","dept_name",function(r){
-                return (r==dept);
+            courses=DB.selectRows("Course","dept_name",function(r){
+                return (r===dept);
             
             });
         return courses;
@@ -48,7 +42,7 @@ const fetchAPI = {
       getRowsByCode: function(code){
 
         return DB.selectRows("Class","course_code",function(r){
-          return (code==r);
+          return (code===r);
       })
 
       },
@@ -57,15 +51,15 @@ const fetchAPI = {
       getRowsByRoom: function(code){
 
         return DB.selectRows("Class","room_name",function(r){
-          return (code==r);
+          return (code===r);
       })
 
       },
 
 satisfyCriteria: function(course,semester) {
 
-  if (semester&&semester!="all") {
-      if (this.discernSemester(course.weeks) != semester) return false;
+  if (semester&&semester!=="all") {
+      if (this.discernSemester(course.weeks) !== semester) return false;
   }
   return true;
 },
@@ -74,15 +68,15 @@ satisfyCriteria: function(course,semester) {
  discernSemester: function(str) {
   let s = str;
 
-  if (s.indexOf("Sep") != -1 || s.indexOf("Oct") != -1 || s.indexOf("Nov") != -1 || s.indexOf("Dec") != -1) return 1;
-  else if (s.indexOf("Jan") != -1 || s.indexOf("Feb") != -1 || s.indexOf("Mar") != -1 || s.indexOf("Apr") != -1 || s.indexOf("May") != -1) return 2;
-  else if (s.indexOf("Jun") != -1 || s.indexOf("Jul") != -1 || s.indexOf("Aug") != -1) return 3;
+  if (s.indexOf("Sep") !== -1 || s.indexOf("Oct") !== -1 || s.indexOf("Nov") !== -1 || s.indexOf("Dec") !== -1) return 1;
+  else if (s.indexOf("Jan") !== -1 || s.indexOf("Feb") !== -1 || s.indexOf("Mar") !== -1 || s.indexOf("Apr") !== -1 || s.indexOf("May") !== -1) return 2;
+  else if (s.indexOf("Jun") !== -1 || s.indexOf("Jul") !== -1 || s.indexOf("Aug") !== -1) return 3;
   s = str.split("")
 
-  if (s[0] == "1") return 1;
-  if (s[0] == "2") return 2;
-  if (s[0] == "3") return 3;
-  if (s[0] == "4") return 3;
+  if (s[0] === "1") return 1;
+  if (s[0] === "2") return 2;
+  if (s[0] === "3") return 3;
+  if (s[0] === "4") return 3;
   return 1;
 },
 
@@ -95,18 +89,18 @@ satisfyCriteria: function(course,semester) {
  
     this.currentCourses=tableSettings.current_courses;
     this.currentClasses=[];
-    for(var i=0;i<tableSettings.current_courses.length;i++){
+    for(let i=0;i<tableSettings.current_courses.length;i++){
             let classRows=this.getRowsByCode(tableSettings.current_courses[i].course_code);
-            //for(var j=0;j<classRows.length;j++) this.currentClasses.push(classRows[j]);
+            //for(let j=0;j<classRows.length;j++) this.currentClasses.push(classRows[j]);
             this.currentClasses.push(classRows);
     }
 
 
     if (!dayRows)
-        for (var i = 0; i < this.days.length; i++)
+        for (let i = 0; i < this.days.length; i++)
           str+=this.buildRow(this.days[i], null, toExport,tableSettings);
     else
-        for (var i = 0; i < this.times.length-1; i++)
+        for (let i = 0; i < this.times.length-1; i++)
           str+=this.buildRow(null, this.times[i], toExport,tableSettings);
  
 
@@ -120,16 +114,16 @@ buildRow: function(day, time, toExport,tableSettings) {
  
   if (day) {
       str += '<tr> <td class="row-header">' + day + '</td>';
-      for (var i = 0; i < this.times.length - 1; i++) {
+      for (let i = 0; i < this.times.length - 1; i++) {
           if (toExport) str = this.buildPrintableCell(this.times[i], day, str,tableSettings);
-          else if (tableSettings.room&&tableSettings.room!='') str = this.buildRoomCell(this.times[i], day, str,tableSettings);
+          else if (tableSettings.room&&tableSettings.room!=='') str = this.buildRoomCell(this.times[i], day, str,tableSettings);
           else str = this.buildCell(this.times[i], day, str,tableSettings);
       }
   } else {
       str += '<tr> <td class="row-header">' + time + '</td>';
-      for (var i = 0; i < this.days.length; i++) {
+      for (let i = 0; i < this.days.length; i++) {
           if (toExport) str = this.buildPrintableCell(time, this.days[i], str,tableSettings);
-          else if(tableSettings.room&&tableSettings.room!='') str = this.buildRoomCell(time, this.days[i], str,tableSettings);
+          else if(tableSettings.room&&tableSettings.room!=='') str = this.buildRoomCell(time, this.days[i], str,tableSettings);
           else str = this.buildCell(time, this.days[i], str,tableSettings);
           
       }
@@ -148,11 +142,11 @@ buildRow: function(day, time, toExport,tableSettings) {
     
     
 
-      for (var i = 0; i < this.currentClasses.length; i++) {
+      for (let i = 0; i < this.currentClasses.length; i++) {
         if (this.currentClasses[i]) {
             for (var j = 0; j < this.currentClasses[i].length; j++) {
 
-                if ((this.currentClasses[i][j].start_time.split(":"))[0] == (time.split(":"))[0] && this.currentClasses[i][j].day_of_week == day) {
+                if ((this.currentClasses[i][j].start_time.split(":"))[0] === (time.split(":"))[0] && this.currentClasses[i][j].day_of_week === day) {
 
                     if (this.currentClasses[i][j].end_time) {
 
@@ -170,13 +164,13 @@ buildRow: function(day, time, toExport,tableSettings) {
     
       for (var k = 0; k < this.ongoingClasses.length; k++) {
 
-          if ((this.ongoingClasses[k].end_time.split(":"))[0] == (time.split(":"))[0] && this.ongoingClasses[k].day_of_week == day) {
+          if ((this.ongoingClasses[k].end_time.split(":"))[0] === (time.split(":"))[0] && this.ongoingClasses[k].day_of_week === day) {
               this.ongoingClasses.splice(k, 1);
               k--;
-          } else if (this.ongoingClasses[k].day_of_week == day) {
+          } else if (this.ongoingClasses[k].day_of_week === day) {
             var x = 0;
         
-            while (this.currentCourses[x].course_code != this.ongoingClasses[k].course_code&&x<this.currentCourses.length) x++;
+            while (this.currentCourses[x].course_code !== this.ongoingClasses[k].course_code&&x<this.currentCourses.length) x++;
 
               let tooltip=this.ongoingClasses[k].start_time+ " - " +this.ongoingClasses[k].end_time+" ";
               if(!tableSettings.display_data.show_room) tooltip+=this.ongoingClasses[k].room_name+" ";
@@ -184,7 +178,7 @@ buildRow: function(day, time, toExport,tableSettings) {
          
 
               str += '<tr  id="' + (day + time + j) + '" class="class' + this.ongoingClasses[k].class_id + '"><td title="'+tooltip+'" class="inner-cell ttCellTheme' + tableSettings.style + '_' + (this.ongoingClasses[k].i + 1) + '"   > <Box>';
-              //if (this.ongoingClasses[k].end_time.split(":")[0] == this.times[this.times.indexOf(time) + 1].split(":")[0]) str += '<span class="x-button glyphicon glyphicon-remove pull-right" title="Remove this class."  data-placement="top" onclick="removeEntry(\'' + this.ongoingClasses[k].class_id + '\',\'' + (day + time + j) + '\');"></span> ';
+              //if (this.ongoingClasses[k].end_time.split(":")[0] === this.times[this.times.indexOf(time) + 1].split(":")[0]) str += '<span class="x-button glyphicon glyphicon-remove pull-right" title="Remove this class."  data-placement="top" onclick="removeEntry(\'' + this.ongoingClasses[k].class_id + '\',\'' + (day + time + j) + '\');"></span> ';
               str += '<p><b>' + this.ongoingClasses[k].course_code+'</b>';
               if (tableSettings.display_data.show_name) {
                 
@@ -218,9 +212,9 @@ buildRow: function(day, time, toExport,tableSettings) {
 
       this.currentClasses.push(this.getRowsByRoom(tableSettings.room));
       
-      for (var i = 0; i < this.currentClasses[0].length; i++) {
+      for (let i = 0; i < this.currentClasses[0].length; i++) {
         let c=this.getCoursesByCode(this.currentClasses[0][i].course_code)[0];
-        if (this.currentCourses.indexOf(c) == -1) {
+        if (this.currentCourses.indexOf(c) === -1) {
 
           this.currentCourses.push( c );
          
@@ -232,10 +226,10 @@ buildRow: function(day, time, toExport,tableSettings) {
       
 
       if (!dayRows)
-          for (var i = 0; i < this.days.length; i++)
+          for (let i = 0; i < this.days.length; i++)
             str+=this.buildRow(this.days[i], null, toExport,tableSettings);
       else
-          for (var i = 0; i < this.times.length; i++)
+          for (let i = 0; i < this.times.length; i++)
             str+=this.buildRow(null, this.times[i], toExport,tableSettings);
 
 
@@ -247,7 +241,7 @@ buildRow: function(day, time, toExport,tableSettings) {
     getCoursesByCode: function(code){
 
       return DB.selectRows("Course","course_code",function(r){
-        return (code==r);
+        return (code===r);
     })
 
     },
@@ -258,11 +252,11 @@ buildRow: function(day, time, toExport,tableSettings) {
     
     
 
-      for (var i = 0; i < this.currentClasses.length; i++) {
+      for (let i = 0; i < this.currentClasses.length; i++) {
         if (this.currentClasses[i]) {
             for (var j = 0; j < this.currentClasses[i].length; j++) {
 
-                if ((this.currentClasses[i][j].start_time.split(":"))[0] == (time.split(":"))[0] && this.currentClasses[i][j].day_of_week == day) {
+                if ((this.currentClasses[i][j].start_time.split(":"))[0] === (time.split(":"))[0] && this.currentClasses[i][j].day_of_week === day) {
 
                     if (this.currentClasses[i][j].end_time) {
 
@@ -280,20 +274,20 @@ buildRow: function(day, time, toExport,tableSettings) {
     
       for (var k = 0; k < this.ongoingClasses.length; k++) {
 
-          if ((this.ongoingClasses[k].end_time.split(":"))[0] == (time.split(":"))[0] && this.ongoingClasses[k].day_of_week == day) {
+          if ((this.ongoingClasses[k].end_time.split(":"))[0] === (time.split(":"))[0] && this.ongoingClasses[k].day_of_week === day) {
               this.ongoingClasses.splice(k, 1);
               k--;
-          } else if (this.ongoingClasses[k].day_of_week == day) {
+          } else if (this.ongoingClasses[k].day_of_week === day) {
             var x = 0;
         
-            while (this.currentCourses[x].course_code != this.ongoingClasses[k].course_code&&x<this.currentCourses.length) x++;
+            while (this.currentCourses[x].course_code !== this.ongoingClasses[k].course_code&&x<this.currentCourses.length) x++;
 
             let tooltip=this.ongoingClasses[k].start_time+ " - " +this.ongoingClasses[k].end_time+" ";
             if(!tableSettings.display_data.show_room) tooltip+=this.ongoingClasses[k].room_name+" ";
             if(!tableSettings.display_data.show_class_type) tooltip+=this.ongoingClasses[k].class_type+" ";
 
               str += '<tr  id="' + (day + time + j) + '" class="class' + this.ongoingClasses[k].class_id + '"><td title="'+tooltip+'" class="inner-cell ttCellTheme' + tableSettings.style + '_' + (this.ongoingClasses[k].i + 1) + '"   > ';
-              //if (this.ongoingClasses[k].end_time.split(":")[0] == this.times[this.times.indexOf(time) + 1].split(":")[0]) str += '<span class="x-button glyphicon glyphicon-remove pull-right" title="Remove this class."  data-placement="top" onclick="removeEntry(\'' + this.ongoingClasses[k].class_id + '\',\'' + (day + time + j) + '\');"></span> ';
+              //if (this.ongoingClasses[k].end_time.split(":")[0] === this.times[this.times.indexOf(time) + 1].split(":")[0]) str += '<span class="x-button glyphicon glyphicon-remove pull-right" title="Remove this class."  data-placement="top" onclick="removeEntry(\'' + this.ongoingClasses[k].class_id + '\',\'' + (day + time + j) + '\');"></span> ';
               str += '<p><b>' + this.ongoingClasses[k].course_code+'</b>';
               if (tableSettings.display_data.show_name) {
                 
@@ -313,9 +307,9 @@ buildRow: function(day, time, toExport,tableSettings) {
       str += ' </tbody> </table></td>';
       return str;
 
-    },
+    }
 
-  DB:DB
+  
 };
 
 const submitAPI = formData => true;
@@ -386,7 +380,7 @@ Table.prototype.insertRecord=function(data){
 
 Table.prototype.select=function(field,criteria){
   var result=[];
-  for (var i=0;i<this.records.length;i++){
+  for (let i=0;i<this.records.length;i++){
     if(criteria){
       if(criteria(this.records[i].data[field])) result.push(this.records[i].data);
     }
@@ -397,7 +391,7 @@ Table.prototype.select=function(field,criteria){
 
 Table.prototype.selectField=function(field,criteria){
   var result=[];
-  for (var i=0;i<this.records.length;i++){
+  for (let i=0;i<this.records.length;i++){
     if(criteria){
       if(criteria(this.records[i].data[field])) result.push(this.records[i].data[field]);
     }
@@ -409,14 +403,14 @@ Table.prototype.selectField=function(field,criteria){
 //Record Class###########################################################################################
 function Record(fields,data){
   this.data=[];
-  for(var i=0;i<fields.length;i++) this.data[fields[i]]=data[i];
+  for(let i=0;i<fields.length;i++) this.data[fields[i]]=data[i];
 }
 
 
 
-
+/*
 function insertionSort(arr){ 
-  var i,j,temp;
+  let i,j,temp;
   for (i=1;i<arr.length;i++){
           j=i;
           while(j-1>=0){
@@ -428,10 +422,10 @@ function insertionSort(arr){
                       j--;                  
                       }
   }
- }
+ }*/
 
 //Making the "Database"###########################################################################################
-var DB=new Database();
+
 
 DB.addTable('Department',['dept_id','dept_name']);
 DB.addTable('Room',['room_id','room_name']);
@@ -13405,7 +13399,7 @@ DB.insert('Class',[11015,'Mon','16:00','20:00','22-34','FHE DCFA G   Visual Arts
 DB.insert('Class',[11159,'Fri','17:00','20:00','22-34','FHE DCFA G   Visual Arts Print Studio & Textile room','VART 2032','Practical']);
 
 /*
-var f=(DB.selectFields('Course','course_code',function(r){if(r=="AGCP 2003") return true;})[0]);
+var f=(DB.selectFields('Course','course_code',function(r){if(r==="AGCP 2003") return true;})[0]);
 
 insertionSort(f);
 console.log(f);*/

@@ -1,30 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ScreenRotationAltIcon from '@mui/icons-material/ScreenRotationAlt';
 import FadeInSection from "./FadeInSection";
 import useMediaQuery from './useMediaQuery';
 
 import {
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
+
     Tooltip,
-    Button,
-    Box
+    Button
 } from '@mui/material';
  
 
 const TimeTable = ({ tableSettings, dataAPI }) => {
     const isSmallScreen = useMediaQuery('(max-width: 1024px)');
     const [useDayHeaders,setUseDayHeaders] =useState(false);
-    const timeHeaders = dataAPI.times;
     const time12Headers = dataAPI.times12hr;
     const dayHeaders = dataAPI.days;
 
     let d;
     if(tableSettings.current_courses&&tableSettings.current_courses.length>0) d=dataAPI.buildTable(tableSettings,(isSmallScreen||useDayHeaders));
-    else if(tableSettings.room!='') d=dataAPI.buildRoomTable(tableSettings,(isSmallScreen||useDayHeaders));
+    else if(tableSettings.room!=='') d=dataAPI.buildRoomTable(tableSettings,(isSmallScreen||useDayHeaders));
     const data=d;
 
     return (
@@ -44,7 +38,8 @@ const TimeTable = ({ tableSettings, dataAPI }) => {
                                          </Tooltip>
                                          }  </th>
                                        {!(isSmallScreen||useDayHeaders)&&time12Headers.map((time, idx) => {
-                                          if(idx<time12Headers.length-1) return (<th className={"ttGeneralTheme"+tableSettings.style}    key={idx}>{time}</th>)
+                                          if(idx<time12Headers.length-1) return (<th className={"ttGeneralTheme"+tableSettings.style}    key={idx}>{time}</th>);
+                                            return null;
                                         })}
            
                                        {(isSmallScreen||useDayHeaders)&&dayHeaders.map((day, idx) => (
