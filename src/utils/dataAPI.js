@@ -72,12 +72,12 @@ satisfyCriteria: function(course,semester) {
   else if (s.indexOf("Jan") !== -1 || s.indexOf("Feb") !== -1 || s.indexOf("Mar") !== -1 || s.indexOf("Apr") !== -1 || s.indexOf("May") !== -1) return 2;
   else if (s.indexOf("Jun") !== -1 || s.indexOf("Jul") !== -1 || s.indexOf("Aug") !== -1) return 3;
   s = str.split("")
-
-  if (s[0] === "1") return 1;
-  if (s[0] === "2") return 2;
-  if (s[0] === "3") return 3;
-  if (s[0] === "4") return 3;
-  return 1;
+  
+  if (s[0] === "1") return s[0];
+  if (s[0] === "2") return s[0];
+  if (s[0] === "3") return s[0];
+  if (s[0] === "4") return s[0];
+  return "1";
 },
 
 

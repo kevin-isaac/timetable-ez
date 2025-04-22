@@ -15,12 +15,12 @@ const TimeTable = ({ tableSettings, dataAPI }) => {
     const [useDayHeaders,setUseDayHeaders] =useState(false);
     const time12Headers = dataAPI.times12hr;
     const dayHeaders = dataAPI.days;
-
+    
     let d;
     if(tableSettings.current_courses&&tableSettings.current_courses.length>0) d=dataAPI.buildTable(tableSettings,(isSmallScreen||useDayHeaders));
     else if(tableSettings.room!=='') d=dataAPI.buildRoomTable(tableSettings,(isSmallScreen||useDayHeaders));
     const data=d;
-
+   
     return (
         <>
  <FadeInSection>

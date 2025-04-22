@@ -1,8 +1,8 @@
 import Login from './pages/Login';
 import './App.css';
 import { React , useState} from "react";
-import { Routes, Link, BrowserRouter, Route, NavLink, HashRouter } from 'react-router-dom';
-import { UserProvider, useUser } from './UserContext';
+import { Routes, Route, HashRouter } from 'react-router-dom';
+import { UserProvider } from './UserContext';
 import Main from "./pages/Main";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { fetchAPI } from './utils/dataAPI';
@@ -19,7 +19,7 @@ const darkTheme = createTheme({
 });
 function Root() {
 
-  const { user } = useUser();
+
   const DB=fetchAPI;
   const [showIntro, setShowIntro] = useState(true);
 
@@ -53,19 +53,6 @@ function Root() {
 
 
 
-const ToDo = props => (
-  <tr>
-    <td>
-      <label>{props.id}</label>
-    </td>
-    <td>
-      <input />
-    </td>
-    <td>
-      <label>{props.createdAt}</label>
-    </td>
-  </tr>
-);
 
 
 function App() {
